@@ -11,7 +11,7 @@ export default function decorate(block) {
 
   if(window.innerWidth <= 767) {
     visibleItems = 1;
-  } else if (window.innerWidth > 1200) {
+  } else if (window.innerWidth > 767) {
     sliderActive = block.children.length > 3;
   }
 
