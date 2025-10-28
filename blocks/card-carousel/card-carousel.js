@@ -5,7 +5,7 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
   ul.classList.add('card-list');
 
-  const sliderActive = block.children.length > 2;
+  let sliderActive = block.children.length > 2;
 
   let visibleItems = 3;
 
@@ -13,44 +13,25 @@ export default function decorate(block) {
     visibleItems = 1;
   } else if(window.innerWidth >= 992 && window.innerWidth <= 1200) {
     visibleItems = 2;
+  } else if (window.innerWidth > 1200) {
+    sliderActive = block.children.length > 3;
   }
 
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.classList.add('card-item');
 
-    const carouselIndicators = document.createElement('div');
-    carouselIndicators.classList.add('indicators');
-
-    const wrapperElement = document.createElement('p');
-
     while (row.firstElementChild) {
       li.append(row.firstElementChild);
     }
 
     [...li.children].forEach((div) => {
-      const anchors = div.querySelectorAll('a');
       const pictures = div.querySelectorAll('picture');
 
-      if (anchors.length === 2) {
-        div.className = 'cards-card-brochure';
-      } else if (pictures.length > 0) {
+      if (pictures.length > 0) {
         div.className = 'card-carousel-image';
-      } else if (div.querySelector('h2')) {
-        div.className = 'cards-card-title';
       } else {
-        div.className = 'cards-card-body';
-      }
-
-      if (pictures.length === 1 && anchors.length === 0) {
-        div.classList.add('onlyOne');
-        while (div.firstChild) {
-          wrapperElement.appendChild(div.firstChild);
-        }
-        div.appendChild(wrapperElement);
-        div.append(carouselIndicators);
-      } else if (pictures.length > 1) {
-        div.append(carouselIndicators);
+        div.className = 'card-carousel-body';
       }
     });
 
@@ -69,12 +50,10 @@ export default function decorate(block) {
   if (sliderActive) {
     const leftArrow = document.createElement('div');
     leftArrow.classList.add('leftSlider');
-    leftArrow.textContent = '‹';
     block.append(leftArrow);
 
     const rightArrow = document.createElement('div');
     rightArrow.classList.add('rightSlider');
-    rightArrow.textContent = '›';
     block.append(rightArrow);
 
     let currentIndex = 0;
@@ -114,37 +93,9 @@ export default function decorate(block) {
 
     leftButton.addEventListener('click', () => moveSlider('left'));
     rightButton.addEventListener('click', () => moveSlider('right'));
+  } else {
+    block.querySelectorAll('.card-item').forEach((item) => {
+      item.classList.add('active');
+    });
   }
-
-  const cardCarousel = block.querySelectorAll('.card-carousel-image');
-  cardCarousel.forEach((carouselItem) => {
-    const imageList = carouselItem.querySelector('p');
-    const images = imageList.querySelectorAll('picture');
-    const indicatorsContainer = carouselItem.querySelector('.indicators');
-    let currentCarouselIndex = 0;
-
-    images.forEach((image, index) => {
-      const indicator = document.createElement('div');
-      indicator.classList.add('indicator');
-      if (index === 0) indicator.classList.add('active');
-      indicator.dataset.index = index;
-      indicatorsContainer.appendChild(indicator);
-    });
-
-    const updateCarousel = () => {
-      const offset = -currentCarouselIndex * 100;
-      imageList.style.transform = `translateX(${offset}%)`;
-      carouselItem.querySelectorAll('.indicator').forEach((indicator) => {
-        indicator.classList.remove('active');
-      });
-      indicatorsContainer.children[currentCarouselIndex].classList.add('active');
-    };
-
-    indicatorsContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('indicator')) {
-        currentCarouselIndex = Number(event.target.dataset.index);
-        updateCarousel();
-      }
-    });
-  });
 }
