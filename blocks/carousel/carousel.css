@@ -72,11 +72,19 @@
   .carousel .carousel-slide .carousel-slide-content {
     z-index: 1;
     margin: 120px 0 0 70px;
-    padding: 16px;
+    padding: 0 0 0 16px;
     color: white;
     position: relative;
     width: auto;
     max-width: 485px;
+  }
+  .carousel .carousel-slide .carousel-slide-content h2 {
+    margin-top: 0;
+  }
+  .carousel .carousel-slide .carousel-slide-content p {
+    font-size: 16px;
+    line-height: 26px;
+    font-family: ToyotaType-Semibold, sans-serif;
   }
   
   .carousel .carousel-slide-indicators {
@@ -124,13 +132,13 @@
     margin: 0;
     border-radius: 50%;
     padding: 0;
-    background-color: rgba(19 19 19 / 25%);
+    background-color: rgba(255, 255, 255, 0.5);
     transition: background-color 0.2s;
   }
   
   .carousel .carousel-navigation-buttons button:hover,
   .carousel .carousel-navigation-buttons button:focus-visible {
-    background-color: rgba(19 19 19 / 75%);
+    background-color: rgba(19 19 19 / 45%);
   }
   
   .carousel .carousel-navigation-buttons button::after {
@@ -141,10 +149,15 @@
     border-left: 0;
     height: 12px;
     width: 12px;
+    color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 50%;
     left: calc(50% + 2px);
     transform: translate(-50%, -50%) rotate(-135deg);
+  }
+  .carousel .carousel-navigation-buttons button:hover::after,
+  .carousel .carousel-navigation-buttons button:focus-visible::after {
+    color: rgba(255, 255, 255, 0.5);
   }
   
   .carousel .carousel-navigation-buttons button.slide-next::after {
@@ -156,13 +169,46 @@
     .carousel .carousel-navigation-buttons {
       left: 24px;
       right: 24px;
-    }
-  
+    }    
     .carousel .carousel-slide .carousel-slide-content[data-align='justify'] {
       --slide-content-width: auto;
     }
   }
-  
+  @media (max-width: 991px) {
+    .carousel .carousel-slide .carousel-slide-image picture {
+        position: relative;
+      }
+      .carousel .carousel-slide .carousel-slide-content {
+        margin: 0;
+        padding: 15px;
+        max-width: 100%;
+        color: rgba(37, 37, 37, 1) !important;
+        text-align: center;
+      }
+      .carousel .carousel-slide .carousel-slide-content p {
+        text-align: left;
+      }
+      .carousel .carousel-slide-indicator button {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .carousel .carousel-navigation-buttons {
+        top: 25%;
+      }
+      .carousel .carousel-navigation-buttons button {
+        width: 30px;
+        height: 30px;
+      }
+      .carousel .carousel-navigation-buttons button::after {
+        width: 10px;
+        height: 10px;
+      }
+  }
+  @media (max-width: 600px) {
+    .content-section h1 {
+        font-size: 22px;
+        line-height: 32px;
+    }
+  }
   .content-section h1, .content-section p {
     text-align: center;
   }
@@ -178,4 +224,5 @@
     letter-spacing: 0px;
     line-height: 28px;
     color: rgba(0, 0, 0, 1);
+    box-sizing: border-box;
 }
