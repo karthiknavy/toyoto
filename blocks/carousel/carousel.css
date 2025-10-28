@@ -1,8 +1,12 @@
 
+.carousel-container {
+    margin-top: 0;
+}
 .carousel-wrapper {
     padding: 0 !important;
     margin: 0;
     max-width: 100% !important;
+    position: relative;
 }
 .carousel .carousel-slides-container {
     position: relative;
@@ -24,6 +28,13 @@
   
   .carousel .carousel-slides::-webkit-scrollbar {
     display: none;
+  }
+  .carousel nav {
+    position: absolute;
+    bottom: 0;
+    z-index: 99;
+    left: 0;
+    width: 100%;
   }
   
   .carousel .carousel-slide {
@@ -83,7 +94,7 @@
     margin: 0 3px;
     padding: 0;
     border-radius: 0;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(255, 255, 255, 0.5);
     transition: background-color 0.2s;
   }
   
@@ -152,3 +163,19 @@
     }
   }
   
+  .content-section h1, .content-section p {
+    text-align: center;
+  }
+  .content-section p {
+    max-width: 952px;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 1);
+}
