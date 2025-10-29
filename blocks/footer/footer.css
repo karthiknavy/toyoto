@@ -1,20 +1,101 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  padding: 52px 37px 52px 37px;
+  background-color: #000000;
+  color: #fff;
+  text-transform: uppercase;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer.block .section p:first-child {
+  float: left;
+  margin-top: -20px;
 }
 
-footer .footer p {
+footer .footer.block .section p:first-child img {
+  width: 65px;
+  max-width: 100%;
+  height: auto;
+}
+
+footer .footer.block .section ul {
   margin: 0;
+  list-style: none;
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding-left: 36px;
+  padding-top: 3px;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+footer .footer.block .section ul li {
+  padding-right: 25px;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0px;
+    line-height: 21px;
+    font-family: "ToyotaType-Book";
+    color: rgba(255, 255, 255, 1);
+    list-style: none;
+}
+
+footer .footer.block .section ul li a {
+  color: white;
+}
+
+footer .footer.block .section p:nth-child(3) {
+  font-size: 14px;
+    letter-spacing: 0.28px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 1);
+    display: block;
+    float: right;
+    font-family: "ToyotaType-Book";
+    margin: 0;
+}
+footer .footer.block .section .default-content-wrapper::after {
+  content: "";
+  clear: both;
+}
+
+@media only screen and (max-width: 992px) {
+  footer {
+    text-align: center;
+    padding: 15px;
+  }
+
+  footer .footer.block .section p:first-child {
+    float: left;
+    margin: 0;
+    height: 70px;
+  }
+
+  footer .footer.block .section ul {
+    padding: 0px;
+    width: 100%;
+  }
+
+  footer .footer.block .section ul li {
+    padding: 12px;
+  }
+
+  footer .footer.block .section p:nth-child(3) {
+    letter-spacing: 0px;
+    line-height: 21px;
+    margin-top: 30px;
+  }
+
+  footer .footer.block .section p:first-child,
+  footer .footer.block .section p:nth-child(3) {
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  footer {
+    padding: 15px 31px 17px 32px;
+  }
+
+  footer .footer.block .section p:nth-child(3) {
+    margin-top: 30px;
+    line-height: 28px;
   }
 }

@@ -49,3 +49,8 @@
   font-family: ToyotaType-Semibold;
   src: url('../fonts/ToyotaType-Semibold.woff') format('woff2');
 }
+
+@font-face {
+  font-family: ToyotaType-Book;
+  src: url('../fonts/ToyotaType-Book.woff') format('woff2');
+}
